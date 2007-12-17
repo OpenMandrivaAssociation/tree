@@ -7,7 +7,6 @@ License:        GPL
 URL:            http://mama.indstate.edu/users/ice/tree/
 Source0:        ftp://mama.indstate.edu/linux/tree/%{name}-%{version}.tgz
 Patch0:         %{name}-typo.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 The tree utility recursively displays the contents of directories in a
