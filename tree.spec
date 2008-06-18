@@ -1,6 +1,6 @@
 Name:           tree
 Version:        1.5.1.1
-Release:        %mkrel 1
+Release:        %mkrel 2
 Summary:        Utility which displays a tree view of directory contents
 Group:          File tools
 License:        GPL
