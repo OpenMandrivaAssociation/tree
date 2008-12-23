@@ -1,12 +1,14 @@
 Name:           tree
 Version:        1.5.1.1
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        Utility which displays a tree view of directory contents
 Group:          File tools
 License:        GPL
 URL:            http://mama.indstate.edu/users/ice/tree/
 Source0:        ftp://mama.indstate.edu/linux/tree/%{name}-%{version}.tgz
 Patch0:         %{name}-typo.patch
+Patch1:		tree-1.5.1.1-LDFLAGS.diff
+Patch2:		tree-1.5.1.1-nostrip.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
@@ -18,11 +20,14 @@ Install tree if you think it would be useful to view the contents of
 specified directories in a tree-like format.
 
 %prep
+
 %setup -q
-%patch0 -p1
+%patch0 -p1 -b .typo
+%patch1 -p0 -b .LDFLAGS
+%patch2 -p0 -b .nostrip
 
 %build
-%{make} RPM_OPT_FLAGS="%{optflags}"
+make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 
 %install
 %{__rm} -rf %{buildroot}
