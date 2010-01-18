@@ -3,7 +3,7 @@ Version:    1.5.3
 Release:    %mkrel 1
 Summary:    Utility which displays a tree view of directory contents
 Group:      File tools
-License:    GPL
+License:    GPLv2+
 URL:        http://mama.indstate.edu/users/ice/tree/
 Source0:    ftp://mama.indstate.edu/linux/tree/%{name}-%{version}.tgz
 Patch0:     tree-1.5.2.2-fix-typo.patch
