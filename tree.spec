@@ -21,7 +21,7 @@ specified directories in a tree-like format.
 
 %setup -q
 %patch0 -p0 -b .nostrip
-%patch1 -p1 -b .linkflags
+# %patch1 -p1 -b .linkflags
 
 %build
 make CFLAGS="%{optflags} -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" LDFLAGS="%{ldflags}"
