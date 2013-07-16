@@ -1,15 +1,13 @@
-Name:		tree
-Version:	1.5.3
-Release:	%mkrel 4
 Summary:	Utility which displays a tree view of directory contents
+Name:		tree
+Version:	1.6.0
+Release:	1
 Group:		File tools
 License:	GPLv2+
 URL:		http://mama.indstate.edu/users/ice/tree/
 Source0:	ftp://mama.indstate.edu/linux/tree/%{name}-%{version}.tgz
-Patch0:		tree-1.5.2.2-fix-typo.patch
-Patch1:		tree-1.5.2.2-link-flags.patch
-Patch2:		tree-1.5.1.1-nostrip.diff
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+Patch0:		tree-1.5.1.1-nostrip.diff
+Patch1:         tree-1.5.2.2-link-flags.patch
 
 %description
 The tree utility recursively displays the contents of directories in a
@@ -22,15 +20,14 @@ specified directories in a tree-like format.
 %prep
 
 %setup -q
-%patch0 -p1 -b .typo
+%patch0 -p0 -b .nostrip
 %patch1 -p1 -b .linkflags
-%patch2 -p0 -b .nostrip
 
 %build
-make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
+make CFLAGS="%{optflags} -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" LDFLAGS="%{ldflags}"
 
 %install
-%{__rm} -rf %{buildroot}
+
 %{__mkdir_p} %{buildroot}/{%{_bindir},%{_sbindir},%{_mandir}/man1}
 
 %{__make} \
@@ -38,18 +35,19 @@ make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 	MANDIR=%{buildroot}%{_mandir}/man1 \
 	install
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc README LICENSE CHANGES
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*
 
 
 %changelog
-* Fri May 06 2011 Oden Eriksson <oeriksson@mandriva.com> 1.5.3-3mdv2011.0
+* Sun Apr 22 2012 Oden Eriksson <oeriksson@mandriva.com> 1.6.0-1
++ Revision: 792658
+- 1.6.0
+- various fixes
+
+* Fri May 06 2011 Oden Eriksson <oeriksson@mandriva.com> 1.5.3-3
 + Revision: 670729
 - mass rebuild
 
@@ -82,7 +80,7 @@ make CFLAGS="%{optflags}" LDFLAGS="%{ldflags}"
 - rebuild
 - kill re-definition of %%buildroot on Pixel's request
 
-  + Olivier Blin <oblin@mandriva.com>
+  + Olivier Blin <blino@mandriva.org>
     - restore BuildRoot
 
 * Sat Nov 10 2007 David Walluck <walluck@mandriva.org> 1.5.1.1-1mdv2008.1
