@@ -1,7 +1,7 @@
 Summary:	Utility which displays a tree view of directory contents
 Name:		tree
 Version:	1.6.0
-Release:	1
+Release:	2
 Group:		File tools
 License:	GPLv2+
 URL:		http://mama.indstate.edu/users/ice/tree/
@@ -24,16 +24,17 @@ specified directories in a tree-like format.
 # %patch1 -p1 -b .linkflags
 
 %build
-make CFLAGS="%{optflags} -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" LDFLAGS="%{ldflags}"
+%global optflags %{optflags} -Os
+%serverbuild_hardened
+%make CFLAGS="%{optflags} -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" LDFLAGS="%{ldflags}"
 
 %install
 
-%{__mkdir_p} %{buildroot}/{%{_bindir},%{_sbindir},%{_mandir}/man1}
+mkdir -p %{buildroot}/{%{_bindir},%{_sbindir},%{_mandir}/man1}
 
-%{__make} \
+%makeinstall_std \
 	BINDIR=%{buildroot}%{_bindir} \
-	MANDIR=%{buildroot}%{_mandir}/man1 \
-	install
+	MANDIR=%{buildroot}%{_mandir}/man1
 
 %files
 %doc README LICENSE CHANGES
