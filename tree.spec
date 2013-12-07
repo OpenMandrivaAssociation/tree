@@ -1,7 +1,7 @@
 Summary:	Utility which displays a tree view of directory contents
 Name:		tree
 Version:	1.6.0
-Release:	4
+Release:	5
 Group:		File tools
 License:	GPLv2+
 URL:		http://mama.indstate.edu/users/ice/tree/
