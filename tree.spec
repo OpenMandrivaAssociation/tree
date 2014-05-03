@@ -7,7 +7,6 @@ Group:		File tools
 License:	GPLv2+
 URL:		http://mama.indstate.edu/users/ice/tree/
 Source0:	ftp://mama.indstate.edu:21/linux/tree/%{name}-%{version}.tgz
-Patch0:		tree-1.5.1.1-nostrip.diff
 Patch1:         tree-1.5.2.2-link-flags.patch
 
 %description
@@ -21,7 +20,6 @@ specified directories in a tree-like format.
 %prep
 
 %setup -q
-%patch0 -p0 -b .nostrip
 # %patch1 -p1 -b .linkflags
 
 %build
