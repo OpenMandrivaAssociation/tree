@@ -1,12 +1,12 @@
 Summary:	Utility which displays a tree view of directory contents
 
 Name:		tree
-Version:	1.7.0
-Release:	7
+Version:	1.8.0
+Release:	1
 Group:		File tools
 License:	GPLv2+
 URL:		http://mama.indstate.edu/users/ice/tree/
-Source0:	ftp://mama.indstate.edu:21/linux/tree/%{name}-%{version}.tgz
+Source0:	ftp://mama.indstate.edu/linux/tree/%{name}-%{version}.tgz
 Patch1:         tree-1.5.2.2-link-flags.patch
 
 %description
@@ -39,6 +39,3 @@ mkdir -p %{buildroot}/{%{_bindir},%{_sbindir},%{_mandir}/man1}
 %doc README LICENSE CHANGES
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}*
-
-
-
