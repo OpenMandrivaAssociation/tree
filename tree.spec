@@ -1,8 +1,8 @@
 Summary:	Utility which displays a tree view of directory contents
 
 Name:		tree
-Version:	1.7.0
-Release:	7
+Version:	1.8.0
+Release:	1
 Group:		File tools
 License:	GPLv2+
 URL:		http://mama.indstate.edu/users/ice/tree/
@@ -20,11 +20,8 @@ specified directories in a tree-like format.
 %prep
 
 %setup -q
-# %patch1 -p1 -b .linkflags
 
 %build
-%global optflags %{optflags} -Os
-%serverbuild_hardened
 %make CFLAGS="%{optflags} -Wall -DLINUX -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64" LDFLAGS="%{ldflags}"
 
 %install
