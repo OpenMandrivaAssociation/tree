@@ -5,7 +5,7 @@ Version:	1.8.0
 Release:	2
 Group:		File tools
 License:	GPLv2+
-URL:		http://mama.indstate.edu/users/ice/tree/
+URL:		https://mama.indstate.edu/users/ice/tree/
 Source0:	ftp://mama.indstate.edu:21/linux/tree/%{name}-%{version}.tgz
 Patch1:         tree-1.5.2.2-link-flags.patch
 
